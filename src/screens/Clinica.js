@@ -5,8 +5,8 @@ import { Text } from "react-native"
 import Tela from "../components/Tela.js"
 import Navegacao from "../components/Navegacao.js"
 import Janela from "../components/Janela.js"
-
 import Carregar from "../functions/Carregar.js"
+
 
 export default function Clinica({ navigation }) {
     const [resultados, definirResultado] = useState({})
@@ -14,12 +14,8 @@ export default function Clinica({ navigation }) {
     useEffect(function () {
         Carregar()
             .then(function (dados) {
-                dados.map((dado) => {
-                    definirResultado(dado)
-                })
-
-                // const valido = JSON.parse(dados || "{}")
-                // definirResultado(valido)
+                const valido = JSON.parse(dados || "{}")
+                definirResultado(valido)
             })
             .catch(function (erro) {
                 alert(erro)
